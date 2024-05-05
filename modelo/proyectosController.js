@@ -10,5 +10,13 @@ const getProyectos = async (req, res) => {
     }
 };
 
+const getProyecto = async (req, res) => {
+    try {
+        const proyecto = await Proyectos.findById(req.params.id);
+        res.json(proyecto);
+    } catch (err) {
+        res.status(500).send("Internal server error");
+    }
+};
 
-export { getProyectos };
+export { getProyectos, getProyecto };
