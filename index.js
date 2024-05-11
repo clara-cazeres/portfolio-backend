@@ -1,7 +1,7 @@
 //importacion de librerias
 import express from "express";
 import dotenv from "dotenv";
-import connectDB from "./utiles/db.js";
+import connectDB from "./scripts/db.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 
@@ -24,9 +24,13 @@ app.get("/", (req, res) => {
     res.send("Hello World");
 });
 
-import { getProyectos } from "./modelo/proyectosController.js";
+// endpoint proyectos
+import { getProyectos, getProyecto } from "./modelo/proyectosController.js";
 
 app.get("/proyectos", getProyectos);
+app.get("/proyecto/:id", getProyecto);
+
+
 
 app.listen(port, () => {
     console.log(`App corriendo en puerto ${port}`)
